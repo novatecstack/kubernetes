@@ -1,8 +1,3 @@
----
-title: Azure Kubernetes Service AKS Virtual Nodes
-description: Create Azure Kubernetes Services (AKS) cluster to use virtual nodes 
----
-
 # Azure Kubernetes Service AKS Virtual Nodes (Serverless)
 
 ## Step-01: Introduction
