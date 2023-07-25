@@ -1,6 +1,6 @@
 # 1. Introduction to Kubernetes
 
-<img src="images/k8s_logo.png" width="300" height="250">
+<img src="images/k8s_logo.png" width="200" height="190">
 
   - Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications.
   - It was developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). 
