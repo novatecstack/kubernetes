@@ -16,3 +16,6 @@
    6) Services
    7) ConfigMaps
    8) Volumes
+
+# [What are *Labels* and *Selectors* in K8s?](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+  
