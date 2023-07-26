@@ -150,4 +150,4 @@ Finally you may check the status of the installation with the following command
 ## References
   - [Minikube Official Documentation](https://minikube.sigs.k8s.io/docs/)
   - [Install and Set Up kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-  - 
+  - [Install Docker Engine](https://docs.docker.com/engine/install/)
