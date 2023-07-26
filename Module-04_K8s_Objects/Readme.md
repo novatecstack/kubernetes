@@ -24,13 +24,28 @@
      2) [<b>*Imperative object configuration*</b> - Individual files](https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#imperative-object-configuration)
      3) [<b>*Declarative object configuration*</b> - Directories of files](https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration)
 
+### Structure of a Kubernetes configuration file (.yaml)
+    ```
+    apiVersion: <api_version_of_k8s_object>
+
+    kind: <kind_of_k8s_object_you_want_to_manage>
+
+    metadata: <dictionary>
+
+    spec:
+      containers:
+      ..
+
+    ```
+   - apiVersion: For more details about apiVersions of various K8s objects, [click here >>](k8s-object-api-ref.md)
+
 ### K8s Objects and IDs
    - Each object in your cluster has a Name that is unique for that type of resource. 
    - Every Kubernetes object also has a UID that is unique across your whole cluster.
-   - For example, you can only have one Pod named *NOVA-WEBAPP-POD* within the same namespace, but you can have one *Pod* and one *Deployment* that are each named myapp-1234.  
+   - For example, you can only have one Pod named *NOVA-WEBAPP-POD* within the same namespace, but you can have one *Pod* and one *Deployment* that are each named *NOVA-WEBAPP-POD*.  
 
 
-### [What are *Labels* and *Selectors* in K8s?](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+### [What are *Labels* in K8s?](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
    - Labels are key-value pairs that are attached to objects such as Pods. 
    - Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. 
    - Labels can be used to organize and to select subsets of objects. 
@@ -54,3 +69,21 @@ Example labels:
   - "tier" : "frontend", "tier" : "backend", "tier" : "cache"
   - "partition" : "customerA", "partition" : "customerB"
   - "track" : "daily", "track" : "weekly"
+
+### [What are *Label Selectors* in K8s?](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+
+   - Via a label selector, the client or user can identify a set of objects. 
+   - The label selector is the core grouping primitive in Kubernetes.
+   - The API currently supports two types of selectors: 
+     1) *Equality-based selectors* 
+        - Allow filtering by label keys and values.
+        - Three kinds of operators are admitted =,==,!=.
+        - Example: environment = production | tier != frontend
+     2) *Set-based selectors*
+        - Set-based label requirements allow filtering keys according to a set of values.
+        - Three kinds of operators are supported: in,notin and exists.
+        - Example: environment in (production, qa) | tier notin (frontend, backend) | partition
+!partition
+   - A label selector can be made of multiple requirements which are comma-separated. 
+   - In the case of multiple requirements, all must be satisfied so the comma separator acts as a logical AND (&&) operator.
+   
