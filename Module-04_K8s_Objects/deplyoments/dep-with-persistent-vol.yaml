@@ -1,0 +1,37 @@
+# Description: This K8s config creates a Deployment object that creates containers which request a PersistentVolume (PV) using a PersistentVolumeClaim (PVC), and mount it on a path within the container.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      volumes:
+        - name: my-pv-storage
+          persistentVolumeClaim:
+            claimName: my-pv-claim
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: "/usr/share/nginx/html"
+              name: my-pv-storage
+
+
+# template.spec.volumes — defines a name for the volume, which is referenced below in containers.volumeMounts 
+
+# template.spec.volumes.persistVolumeClaim — references a PVC. For this to work, you must have some PVs in your cluster and create a PVC object that matches those PVs. You can then reference the existing PVC object here and the pod will attempt to bind to a matching PV.

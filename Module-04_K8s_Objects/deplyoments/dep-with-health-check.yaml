@@ -1,0 +1,38 @@
+# Description: This K8s config file creates a Deployment object that performs a health check on containers by checking for an HTTP response on the root directory.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+
+# The template.spec.containers.livenessProbe field defines what the kubelet should check to ensure that the pod is alive: 
+
+# httpGet - specifies that the kubelet should try a HTTP request on the root of the web server on port 80.
+# periodSeconds - specifies how often the kubelet should perform a liveness probe.
+# initialDelaySeconds - specifies how long the kubelet should wait after the pod starts, before performing the first probe.

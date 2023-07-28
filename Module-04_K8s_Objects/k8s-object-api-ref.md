@@ -13,7 +13,7 @@
    | PersistentVolumeClaim     |  v1 |
    | PersistentVolume     |  v1 | 
    | StatefulSet     |  apps/v1 |
-   | Deployment     |  - |
+   | Deployment     |  apps/v1 |
    | ReplicaSet     |  - |  
    | HorizontalPodAutoscaler     |  - |
    | Ingress     |  - |
@@ -24,9 +24,10 @@
    - alpha
      - API versions with ‘alpha’ in their name are early candidates for new functionality coming into Kubernetes. 
      - This is not stable for use and may contain bugs.
-     
+
    - beta
-    *beta* in the API version name means that testing has progressed past alpha level and that the feature will eventually be included in Kubernetes. Although the way it works might change, and the way objects are defined may change completely, the feature itself is highly likely to make it into Kubernetes in some form.
+     - *beta* in the API version name means that testing has progressed past alpha level and that the feature will eventually be included in Kubernetes.
+     - Although the way it works might change, and the way objects are defined may change completely, the feature itself is highly likely to make it into Kubernetes in some form.
 
    - stable
      - They are safe to use. These do not contain ‘alpha’ or ‘beta’ in their name.
