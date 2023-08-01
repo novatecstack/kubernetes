@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nova-replicaset
+  labels:
+    name: nova-webapp
+spec:
+  selector:
+    matchLabels:
+      environment: dev
+  # modify replicas according to your case      
+  replicas: 3
+  template:
+    metadata:
+      name: nova-nginx
+      labels:
+        environment: dev 
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
