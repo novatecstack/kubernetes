@@ -9,7 +9,7 @@ spec:
     matchLabels:
       environment: dev
   # modify replicas according to your case      
-  replicas: 3
+  replicas: 5
   template:
     metadata:
       name: nova-nginx

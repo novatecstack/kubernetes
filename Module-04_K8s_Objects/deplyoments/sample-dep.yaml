@@ -1,19 +1,19 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: bin-replicaset
+  name: bin-deployment
   labels:
-    description: this rs is for webapp deployment
+    apptype: web
 spec:
   selector:
     matchLabels:
-      name: nova-nginx
-  replicas: 5
+      app: web
+  replicas: 3
   template:
     metadata:
       name: nova-nginx-webapp
       labels:
-        name: nova-nginx
+        app: web
     spec:
       containers:
         - name: nginx-pod

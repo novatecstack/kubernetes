@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-configMap
+spec:
+  containers:
+    - name: app-using-cm
+      image: nginx
+      ports:
+        - containerPort: 80
+      env:
+        - name: THEME-TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-configs
+              key: ENV_TYPE

@@ -17,11 +17,9 @@ spec:
         app: web
     spec:
       containers:
-       —name: nginx
+        - name: nginx
           image: nginx
-          ports:
-           —containerPort: 
-           
+          
 # spec.replicas—specifies how many pods to run
 # strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate, which means new versions are rolled out gradually to pods to avoid downtime.
 # spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
